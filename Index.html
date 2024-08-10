@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Clicker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        #counter {
+            font-size: 48px;
+            margin: 20px 0;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Telegram Clicker</h1>
+    <div id="counter">0</div>
+    <button onclick="incrementCounter()">Click me!</button>
+
+    <script>
+        let count = 0;
+
+        function incrementCounter() {
+            count++;
+            document.getElementById('counter').innerText = count;
+            // Здесь вы можете добавить отправку данных в Telegram через WebApp API
+            Telegram.WebApp.sendData(JSON.stringify({ counter: count }));
+        }
+
+        // Инициализация WebApp
+        Telegram.WebApp.ready();
+    </script>
+</body>
+</html>
